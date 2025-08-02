@@ -17,11 +17,11 @@ return {
         },
       })
 
-      vim.keymap.set("i", '<Tab>', function()
+      vim.keymap.set("i", '<S-Tab>', function()
         if require("copilot.suggestion").is_visible() then
           require("copilot.suggestion").accept()
         else
-          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", false)
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<S-Tab>", true, false, true), "n", false)
         end
       end, {
           silent = true,
