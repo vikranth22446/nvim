@@ -25,6 +25,20 @@ require("lazy").setup({
         "lewis6991/gitsigns.nvim",
         event = "User FilePost"
     },
+    {
+      "folke/flash.nvim",
+      event = "VeryLazy",
+      ---@type Flash.Config
+      opts = {},
+      -- stylua: ignore
+      keys = {
+        { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+        { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+        { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+        { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+        { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+      },
+    },
     {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
     {
       'terrortylor/nvim-comment',
@@ -66,7 +80,8 @@ require("lazy").setup({
     },
     -- automatically check for plugin updates
     checker = {
-        enabled = true
+        enabled = true,
+        notify = false, 
     }
 })
 
@@ -76,9 +91,12 @@ vim.keymap.set("n", "<leader>fmd", vim.lsp.buf.format)
 
 vim.cmd [[colorscheme tokyonight-moon]]
 require('bufferline').setup{}
-vim.keymap.set("n", "<leader>n", ":bn<cr>", {desc ="Next Pane"})
-vim.keymap.set("n", "<leader>p", ":bp<cr>", {desc="Previous Pane"})
-vim.keymap.set("n", "<leader>x", ":bd<cr>", {desc="Close Window"})
+vim.keymap.set("n", "<leader>n", ":bn<cr>", { desc = "Next Buffer", nowait = true })
+vim.keymap.set("n", "<leader>p", ":bp<cr>", { desc = "Previous Buffer", nowait = true })
+
+-- vim.keymap.set("n", "<leader>n", ":bn<cr>", {desc ="Next Pane"})
+-- vim.keymap.set("n", "<leader>p", ":bp<cr>", {desc="Previous Pane"})
+-- vim.keymap.set("n", "<leader>x", ":bd<cr>", {desc="Close Window"})
 vim.keymap.set({"n", "v"}, "<leader>/", ":CommentToggle<cr>", {desc="Comment"})
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 
