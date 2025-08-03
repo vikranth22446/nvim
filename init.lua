@@ -81,7 +81,7 @@ require("lazy").setup({
     -- automatically check for plugin updates
     checker = {
         enabled = true,
-        notify = false, 
+        notify = false
     }
 })
 
@@ -135,6 +135,7 @@ vim.lsp.config["*"] = {
 }
 vim.keymap.set({ "n", "i", "v" }, "<D-s>", "<Cmd>w<CR>", { desc = "Save" })
 vim.keymap.set({ "n", "i", "v" }, "<D-z>", "<Cmd>undo<CR>", { desc = "Undo" })
+vim.keymap.set("n", "<leader>w", "<Cmd>w<CR>", { desc = "Save file" })
 
 vim.opt.clipboard = "unnamedplus"
 
@@ -217,6 +218,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 vim.opt.winborder = 'rounded'
 vim.keymap.set('n', '<S-Up>', 'Vk', { noremap = true, silent = true })
 vim.keymap.set('n', '<S-Down>', 'Vj', { noremap = true, silent = true })
@@ -229,3 +231,4 @@ vim.keymap.set('v', '<Tab>', '>gv', { noremap = true, silent = true })
 -- Indent left with Shift+Tab in visual mode, stay in visual mode
 vim.keymap.set('v', '<S-Tab>', '<gv', { noremap = true, silent = true })
 
+require('claude')
