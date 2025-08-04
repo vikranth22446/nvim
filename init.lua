@@ -62,7 +62,9 @@ require("lazy").setup({
   }
 },    
 
-
+{
+  "folke/twilight.nvim",
+        },
     {
         "karb94/neoscroll.nvim",
         opts = {},
